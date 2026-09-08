@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/static-security-check.mjs && node --test --test-isolation=none test/*.test.mjs",
-    "test": "node --test --test-isolation=none test/*.test.mjs"
+    "check": "node scripts/static-security-check.mjs && node test/authorization-policy.test.mjs && node test/static-security-check.test.mjs",
+    "test": "node test/authorization-policy.test.mjs && node test/static-security-check.test.mjs"
   },
   "engines": {
     "node": ">=22"

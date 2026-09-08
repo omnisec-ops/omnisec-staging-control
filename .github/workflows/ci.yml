@@ -22,4 +22,4 @@ jobs:
       - name: Run Static Security Check
         run: node scripts/static-security-check.mjs
       - name: Run fail-closed unit tests
-        run: node --test --test-isolation=none test/*.test.mjs
+        run: node test/authorization-policy.test.mjs && node test/static-security-check.test.mjs
