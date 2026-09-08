@@ -83,7 +83,7 @@ export async function scanControlRepository() {
     "backend_image:",
     "frontend_image:",
     "permissions: {}",
-    "github.repository == 'HKTeerawat/omnisec-staging-control'",
+    "github.repository == 'omnisec-ops/omnisec-staging-control'",
     "github.event_name == 'workflow_dispatch'",
     "github.ref == 'refs/heads/main'",
     "github.run_attempt == 1",
@@ -111,8 +111,8 @@ export async function scanControlRepository() {
   const schema = JSON.parse(await read(path.join("schemas", "deployment-authorization.schema.json")));
   if (schema.additionalProperties !== false) failures.push("schema:open-root");
   if (schema.properties?.targetTrafficPercentage?.const !== 0) failures.push("schema:traffic-not-zero");
-  if (schema.properties?.controlRepository?.const !== "HKTeerawat/omnisec-staging-control") failures.push("schema:control-repository-not-exact");
-  if (schema.properties?.authorizationWorkflowIdentity?.const !== "https://github.com/HKTeerawat/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main") failures.push("schema:workflow-identity-not-exact");
+  if (schema.properties?.controlRepository?.const !== "omnisec-ops/omnisec-staging-control") failures.push("schema:control-repository-not-exact");
+  if (schema.properties?.authorizationWorkflowIdentity?.const !== "https://github.com/omnisec-ops/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main") failures.push("schema:workflow-identity-not-exact");
 
   const policy = JSON.parse(await read(path.join("policies", "queue-v2-staging-policy.json")));
   if (policy.target?.name !== "staging-target-unconfigured") failures.push("policy:target-claims-readiness");

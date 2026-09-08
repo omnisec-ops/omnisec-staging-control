@@ -6,7 +6,7 @@
 
 ### ขั้นตอนที่ 1: สร้าง Repository ใหม่บน GitHub
 1. ไปที่ https://github.com/new
-2. ตั้งชื่อ Repository ให้ตรงกับ trust contract: `HKTeerawat/omnisec-staging-control`
+2. ตั้งชื่อ Repository ให้ตรงกับ trust contract: `omnisec-ops/omnisec-staging-control`
 3. เลือกสถานะเป็น **Public** (จำเป็น เพื่อใช้ Environment Reviewer ฟรี)
 4. ห้าม push จนกว่า static/unit checks ผ่านและมี authorization แยกสำหรับการสร้าง public repository
 
@@ -38,7 +38,7 @@
 ---
 
 ### ขั้นตอนที่ 4: ให้ workflow อ่าน private GHCR packages แบบแคบ
-1. ที่ package `omnisec-backend` และ `omnisec-frontend` ให้เพิ่ม repository `HKTeerawat/omnisec-staging-control` ใน **Manage Actions access** ด้วยสิทธิ์ Read เท่านั้น
+1. ที่ package `omnisec-backend` และ `omnisec-frontend` ให้เพิ่ม repository `omnisec-ops/omnisec-staging-control` ใน **Manage Actions access** ด้วยสิทธิ์ Read เท่านั้น
 2. ห้ามเปลี่ยน package visibility เป็น public เพื่อหลบขั้นตอนนี้
 3. Workflow ใช้เฉพาะ `GITHUB_TOKEN` แบบชั่วคราวพร้อม `packages: read`; ห้ามเพิ่ม PAT, signing key หรือ repository secret
 4. หาก policy นี้ตั้งไม่ได้หรืออ่าน package ไม่ได้ ให้ถือว่า authorization workflow เป็น `blocked`
