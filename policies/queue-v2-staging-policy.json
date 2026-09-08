@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "environment": "staging",
+  "target": {
+    "name": "staging-target-unconfigured",
+    "classification": "non-production"
+  },
+  "approval": {
+    "environment": "staging",
+    "protectionRequired": true,
+    "minimumReviewers": 1,
+    "rollbackAuthorityRequired": true
+  },
+  "providers": {
+    "delivery": {
+      "name": "unconfigured",
+      "configured": false
+    },
+    "traffic": {
+      "name": "unconfigured",
+      "configured": false
+    },
+    "readiness": {
+      "name": "unconfigured",
+      "configured": false
+    },
+    "semantic": {
+      "name": "unconfigured",
+      "configured": false
+    },
+    "observability": {
+      "name": "unconfigured",
+      "configured": false
+    }
+  },
+  "traffic": {
+    "allowedPercentages": [
+      0,
+      1,
+      5,
+      25
+    ],
+    "fallbackVersion": "v1"
+  },
+  "gates": {
+    "observationWindowMinutes": 15,
+    "p95LimitMs": 500,
+    "errorRateLimit": 0.01,
+    "semanticMismatchLimit": 0,
+    "requireIndexHealth": true,
+    "requireMigrationComplete": true,
+    "requireCapacityConfirmation": true,
+    "requireProvenanceMatch": true,
+    "requireObservability": true
+  }
+}

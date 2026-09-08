@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/HKTeerawat/omnisec-staging-control/schemas/deployment-authorization.schema.json",
+  "title": "OmniSec zero-traffic staging deployment authorization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "authorizationId",
+    "sourceRepository",
+    "sourceRevision",
+    "sourceRef",
+    "sourceStateHash",
+    "manifestSha256",
+    "backendImage",
+    "frontendImage",
+    "publishWorkflowSha",
+    "targetEnvironment",
+    "targetTrafficPercentage",
+    "reviewGate",
+    "authorizedAt",
+    "expiresAt",
+    "controlRepository",
+    "authorizationWorkflowIdentity",
+    "authorizationWorkflowRef",
+    "authorizationWorkflowSha",
+    "authorizationEvent",
+    "authorizationRunId",
+    "authorizationRunAttempt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "authorizationId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "sourceRepository": { "const": "HKTeerawat/omnisec-security-platform" },
+    "sourceRevision": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "sourceRef": { "const": "refs/heads/main" },
+    "sourceStateHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "manifestSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "backendImage": {
+      "type": "string",
+      "pattern": "^ghcr\\.io/hkteerawat/omnisec-backend@sha256:[a-f0-9]{64}$"
+    },
+    "frontendImage": {
+      "type": "string",
+      "pattern": "^ghcr\\.io/hkteerawat/omnisec-frontend@sha256:[a-f0-9]{64}$"
+    },
+    "publishWorkflowSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "targetEnvironment": { "const": "staging" },
+    "targetTrafficPercentage": { "const": 0 },
+    "reviewGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "environment", "workflowRunId", "independentReviewerVerified"],
+      "properties": {
+        "provider": { "const": "github-actions-environment" },
+        "environment": { "const": "staging" },
+        "workflowRunId": { "type": "string", "pattern": "^[1-9][0-9]{0,19}$" },
+        "independentReviewerVerified": { "const": true }
+      }
+    },
+    "authorizedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "controlRepository": { "const": "HKTeerawat/omnisec-staging-control" },
+    "authorizationWorkflowIdentity": {
+      "const": "https://github.com/HKTeerawat/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main"
+    },
+    "authorizationWorkflowRef": { "const": "refs/heads/main" },
+    "authorizationWorkflowSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "authorizationEvent": { "const": "workflow_dispatch" },
+    "authorizationRunId": { "type": "string", "pattern": "^[1-9][0-9]{0,19}$" },
+    "authorizationRunAttempt": { "const": 1 }
+  }
+}

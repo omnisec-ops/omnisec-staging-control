@@ -1,0 +1,13 @@
+{
+  "name": "omnisec-staging-control",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/static-security-check.mjs && node --test --test-isolation=none test/*.test.mjs",
+    "test": "node --test --test-isolation=none test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
