@@ -80,10 +80,10 @@ const STATEMENT_TYPES = new Set([
 
 export const CONTROL_CONTRACT = Object.freeze({
   schemaVersion: 1,
-  controlRepository: "HKTeerawat/omnisec-staging-control",
+  controlRepository: "omnisec-ops/omnisec-staging-control",
   authorizationWorkflowName: "staging-authorization",
   authorizationWorkflowRef: "refs/heads/main",
-  authorizationWorkflowIdentity: "https://github.com/HKTeerawat/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main",
+  authorizationWorkflowIdentity: "https://github.com/omnisec-ops/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main",
   authorizationEvent: "workflow_dispatch",
   sourceRepository: "HKTeerawat/omnisec-security-platform",
   sourceRef: "refs/heads/main",

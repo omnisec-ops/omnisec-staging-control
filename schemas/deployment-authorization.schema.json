@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/HKTeerawat/omnisec-staging-control/schemas/deployment-authorization.schema.json",
+  "$id": "https://github.com/omnisec-ops/omnisec-staging-control/schemas/deployment-authorization.schema.json",
   "title": "OmniSec zero-traffic staging deployment authorization",
   "type": "object",
   "additionalProperties": false,
@@ -63,9 +63,9 @@
     },
     "authorizedAt": { "type": "string", "format": "date-time" },
     "expiresAt": { "type": "string", "format": "date-time" },
-    "controlRepository": { "const": "HKTeerawat/omnisec-staging-control" },
+    "controlRepository": { "const": "omnisec-ops/omnisec-staging-control" },
     "authorizationWorkflowIdentity": {
-      "const": "https://github.com/HKTeerawat/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main"
+      "const": "https://github.com/omnisec-ops/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main"
     },
     "authorizationWorkflowRef": { "const": "refs/heads/main" },
     "authorizationWorkflowSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },

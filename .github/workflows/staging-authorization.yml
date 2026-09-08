@@ -35,14 +35,14 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  EXPECTED_CONTROL_REPOSITORY: HKTeerawat/omnisec-staging-control
-  EXPECTED_AUTHORIZATION_WORKFLOW_IDENTITY: https://github.com/HKTeerawat/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main
+  EXPECTED_CONTROL_REPOSITORY: omnisec-ops/omnisec-staging-control
+  EXPECTED_AUTHORIZATION_WORKFLOW_IDENTITY: https://github.com/omnisec-ops/omnisec-staging-control/.github/workflows/staging-authorization.yml@refs/heads/main
   EXPECTED_OIDC_ISSUER: https://token.actions.githubusercontent.com
 
 jobs:
   pre-approval-verification:
     if: >-
-      github.repository == 'HKTeerawat/omnisec-staging-control' &&
+      github.repository == 'omnisec-ops/omnisec-staging-control' &&
       github.event_name == 'workflow_dispatch' &&
       github.ref == 'refs/heads/main' &&
       github.run_attempt == 1
@@ -80,7 +80,7 @@ jobs:
   approve-and-sign:
     needs: pre-approval-verification
     if: >-
-      github.repository == 'HKTeerawat/omnisec-staging-control' &&
+      github.repository == 'omnisec-ops/omnisec-staging-control' &&
       github.event_name == 'workflow_dispatch' &&
       github.ref == 'refs/heads/main' &&
       github.run_attempt == 1
